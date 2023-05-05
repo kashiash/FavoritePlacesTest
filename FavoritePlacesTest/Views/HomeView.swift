@@ -12,7 +12,7 @@ struct HomeView: View {
     @StateObject var viewModel = PlacesListVM()
     var body: some View {
         NavigationStack{
-            //topHeader()
+            topHeader()
             if !viewModel.places.isEmpty{
                 // placesView()
                 
@@ -27,10 +27,31 @@ struct HomeView: View {
             
         }
     }
+    
+    private func topHeader() -> some View{
+        HStack{
+            Text("Favorite Places")
+                .font(.title)
+            
+        }
+    }
+    
+    private func emptyStateView() -> some View{
+        HStack{
+            
+        }
+    }
+    
+    private func placesView() -> some View{
+        HStack{
+            
+        }
+    }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .preferredColorScheme(.dark)
     }
 }
