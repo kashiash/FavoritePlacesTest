@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 class AddPlaceVM: ObservableObject {
-    @Published var name: String = ""
+    @Published var name: String = "Taj Mahal"
     @Published var city: String = ""
     @Published var country: String = ""
     @Published var notes: String = ""
@@ -25,7 +25,7 @@ class AddPlaceVM: ObservableObject {
     
     func getImageFor(placeName: String) async {
         let encodedName = placeName.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
-        let url = URL(string: "https://cource.unsplash.com/1080x1350/?\(encodedName)")!
+        let url = URL(string: "https://source.unsplash.com/1080x1350/?\(encodedName)")!
         do{
             let (data,_) = try await URLSession.shared.data(from:url)
             await MainActor.run{

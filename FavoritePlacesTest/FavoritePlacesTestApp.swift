@@ -11,7 +11,8 @@ import SwiftUI
 struct FavoritePlacesTestApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+           // ContentView()
+            AddPlaceView()
         }
     }
 }
