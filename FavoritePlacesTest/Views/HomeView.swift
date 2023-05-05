@@ -30,8 +30,15 @@ struct HomeView: View {
     
     private func topHeader() -> some View{
         HStack{
-            Text("Favorite Places")
+            Text("**Favorite Places**")
                 .font(.title)
+            Spacer()
+            Button(action: {viewModel.showAddSheet.toggle() }) {
+                Image(systemName: "plus.circle.fill")
+                    .font(.largeTitle)
+                    .foregroundStyle(.primary)
+                    .tint(Color.orange.gradient)
+            }
             
         }
     }
