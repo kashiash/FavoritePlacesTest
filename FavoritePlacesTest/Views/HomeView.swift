@@ -14,7 +14,7 @@ struct HomeView: View {
         NavigationStack{
             topHeader()
             if !viewModel.places.isEmpty{
-                // placesView()
+                 placesView()
                 
             } else {
                 // emptyStateView()
@@ -60,8 +60,51 @@ struct HomeView: View {
     }
     
     private func placesView() -> some View{
-        HStack{
+        GeometryReader{geo in
+            ScrollView(.horizontal,showsIndicators: false){
+                HStack{
+                    ForEach(viewModel.places){ place in
+                    placeCell(place,imageMaxWidth: geo.size.width * 0.95)
+                    }
+                }
+            }
             
+        }
+    }
+    
+    private func placeCell(_ place: PlaceViewModel, imageMaxWidth:CGFloat) -> some View{
+        NavigationLink{
+            Text(place.name)
+        } label: {
+            ZStack(alignment: .bottom) {
+                place.placeImage
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: imageMaxWidth)
+                
+                VStack{
+                    Label(place.name,systemImage: "mappin.circle.fill")
+                        .minimumScaleFactor(0.5)
+                        .padding(.horizontal)
+                        .padding(.vertical,10)
+                        .background(.ultraThinMaterial,in: RoundedRectangle(cornerRadius: 20))
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                    Spacer()
+                    HStack{
+                        Text(place.city)
+                        Spacer()
+                        Text(place.country)
+                            .padding(.horizontal)
+                            .padding(.vertical,10)
+                            .background(.ultraThinMaterial)
+                        
+                    }
+                    
+                }
+                .contentShape(Rectangle())
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+            }
+            .buttonStyle(.plain)
         }
     }
 }
