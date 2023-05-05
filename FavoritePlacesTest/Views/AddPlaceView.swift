@@ -86,7 +86,14 @@ struct AddPlaceView: View {
     }
     private func savePlace() {
         // czary mary z coredata
-        dismiss()
+        Task{
+            await viewModel.savePlace()
+            //MARK dismiss in dispatch quee because save is async 
+            DispatchQueue.main.async {
+                dismiss()
+            }
+        }
+       
     }
 }
 

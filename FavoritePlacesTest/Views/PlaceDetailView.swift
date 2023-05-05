@@ -20,7 +20,7 @@ struct PlaceDetailView: View {
         ZStack(alignment: .bottom){
             ZStack(alignment: .bottom){
                 backgroundImageView()
-                //placeDetailView
+                placeDetailView()
             }
             .frame(maxHeight: .infinity)
             .edgesIgnoringSafeArea(.all)
@@ -62,10 +62,59 @@ struct PlaceDetailView: View {
             
         }
     }
+    
+    fileprivate func placeDetailView() -> some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                HStack {
+                    Text(place.name)
+                        .font(.title)
+                    Spacer()
+                }
+                
+                HStack {
+                    Text(place.city)
+                    Spacer()
+                    Text(place.country)
+                }
+                .foregroundStyle(.secondary)
+                
+                Text(place.notes)
+                
+                Spacer()
+                NavigationLink{
+                    LazyView{
+                        MapDetailView(place: place)
+                    }
+                } label: {
+                    Map(coordinateRegion: $locationManager.region, interactionModes: .zoom)
+                        .frame(height: 150)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                }
+                
+                Divider()
+                
+                Button(role: .destructive) {
+                    CoreDataManager.shared.delete(id: place.id)
+                    dismiss()
+                } label: {
+                    Text("Delete")
+                }
+                .frame(maxWidth: .infinity)
+                .buttonStyle(.borderedProminent)
+            }
+            .padding(10)
+        }
+        .padding()
+        .frame(maxWidth: .infinity)
+        .frame(height: 400)
+        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 20))
+    }
 }
 
 struct PlaceDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        PlaceDetailView(place:PlaceViewModel.sampleData[3])
+        PlaceDetailView(place:PlaceViewModel.sampleData[1])
+            .preferredColorScheme(.dark)
     }
 }
