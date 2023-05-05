@@ -17,7 +17,7 @@ struct HomeView: View {
                  placesView()
                 
             } else {
-                // emptyStateView()
+                 emptyStateView()
             }
             Spacer()
         }
@@ -54,8 +54,11 @@ struct HomeView: View {
     }
     
     private func emptyStateView() -> some View{
-        HStack{
-            
+        Group{
+            Spacer()
+            Text("Lets add some places by tapping +")
+                .font(.largeTitle)
+                .foregroundStyle(.secondary.opacity(0.5))
         }
     }
     
