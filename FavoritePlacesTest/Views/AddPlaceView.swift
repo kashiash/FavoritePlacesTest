@@ -35,12 +35,12 @@ struct AddPlaceView: View {
             if let image = viewModel.image{
                 image
                     .resizable()
-                    .frame(width: 200,height: 350)
+                    .frame(width: 200,height: 250)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
             } else {
                 Image("eiffel_tower")
                     .blur(radius: 5)
-                    .frame(width: 200,height: 350)
+                    .frame(width: 200,height: 250)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
             }
                 Button("Get Image") {
@@ -58,13 +58,17 @@ struct AddPlaceView: View {
                         savePlace()
                     }) {
                         Label("Save",systemImage: "doc.fill.badge.plus")
+                         
                     }
                     .buttonStyle(.borderedProminent)
                     
+                    
                     Button(role: .destructive, action: {
                         dismiss()
-                    }, label: {
+                    }
+                           , label: {
                         Label("Cancel", systemImage: "x.square.fill")
+                            
                     })
                     .buttonStyle(.borderedProminent)
                 }

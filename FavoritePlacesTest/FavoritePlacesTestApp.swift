@@ -11,8 +11,10 @@ import SwiftUI
 struct FavoritePlacesTestApp: App {
     var body: some Scene {
         WindowGroup {
-           // ContentView()
-            AddPlaceView()
+            ContentView()
+                .preferredColorScheme(.dark)
+            //AddPlaceView()
         }
+        
     }
 }

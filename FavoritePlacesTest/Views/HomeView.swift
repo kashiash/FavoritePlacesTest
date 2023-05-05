@@ -39,6 +39,16 @@ struct HomeView: View {
                     .foregroundStyle(.primary)
                     .tint(Color.orange.gradient)
             }
+            .sheet(isPresented: $viewModel.showAddSheet,
+            onDismiss: {
+                viewModel.fetchPlaces()
+            }) {
+                AddPlaceView()
+                    .presentationDetents([.large])
+                    .presentationDragIndicator(.hidden)
+                    .presentationCornerRadius(20)
+                    .presentationBackground(.ultraThinMaterial)
+            }
             
         }
     }
