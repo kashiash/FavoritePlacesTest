@@ -1,9 +1,9 @@
-//
-//  AddPlaceView.swift
-//  FavoritePlacesTest
-//
-//  Created by Jacek Kosiński G on 04/05/2023.
-//
+    //
+    //  AddPlaceView.swift
+    //  FavoritePlacesTest
+    //
+    //  Created by Jacek Kosiński G on 04/05/2023.
+    //
 
 import SwiftUI
 
@@ -13,36 +13,33 @@ struct AddPlaceView: View {
     @StateObject var viewModel = AddPlaceVM()
     
     var body: some View {
-        ZStack{
-            VStack{
+        ZStack {
+            VStack {
                 Text("New favorite place")
                     .font(.title)
                 Group{
                     TextField("Name of the place:", text: $viewModel.name)
                     TextField("City:", text:  $viewModel.city)
                     TextField("Country:", text:  $viewModel.country)
-                 //   TextField("Notes:", text:  $viewModel.notes)
-                    Section(header: Text("Notes")) {
-                        TextEditor(text: $viewModel.notes)
-                            .frame(height: 60) // Adjust the height to show 3 lines
-                   }
+                    TextField("Notes:", text:  $viewModel.notes)
+                    }
                 }
                 .textFieldStyle(.roundedBorder)
                 .padding(.horizontal)
-            
-            Spacer()
-            
-            if let image = viewModel.image{
-                image
-                    .resizable()
-                    .frame(width: 200,height: 250)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-            } else {
-                Image("eiffel_tower")
-                    .blur(radius: 5)
-                    .frame(width: 200,height: 250)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-            }
+                
+                Spacer()
+                
+                if let image = viewModel.image{
+                    image
+                        .resizable()
+                        .frame(width: 200,height: 250)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                } else {
+                    Image("eiffel_tower")
+                        .blur(radius: 5)
+                        .frame(width: 200,height: 250)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                }
                 Button("Get Image") {
                     Task{
                         await viewModel.getImageFor(placeName: viewModel.name)
@@ -53,12 +50,12 @@ struct AddPlaceView: View {
                 .disabled(viewModel.name.isEmpty)
                 
                 Spacer()
-                HStack{
+                HStack {
                     Button(action: {
                         savePlace()
                     }) {
                         Label("Save",systemImage: "doc.fill.badge.plus")
-                         
+                        
                     }
                     .buttonStyle(.borderedProminent)
                     
@@ -68,7 +65,7 @@ struct AddPlaceView: View {
                     }
                            , label: {
                         Label("Cancel", systemImage: "x.square.fill")
-                            
+                        
                     })
                     .buttonStyle(.borderedProminent)
                 }
@@ -85,15 +82,15 @@ struct AddPlaceView: View {
         .interactiveDismissDisabled()
     }
     private func savePlace() {
-        // czary mary z coredata
+        viewModel.showProgress.toggle()
         Task{
             await viewModel.savePlace()
-            //MARK dismiss in dispatch quee because save is async 
+                //MARK dismiss in dispatch quee because save is async
             DispatchQueue.main.async {
                 dismiss()
             }
         }
-       
+        
     }
 }
 
