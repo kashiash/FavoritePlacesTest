@@ -26,10 +26,10 @@ struct HomeView: View {
             .padding()
             .onAppear{
                 viewModel.fetchPlaces()
-                
             }
         }
     }
+    
     private func topHeader() -> some View{
         HStack{
             Text("**Favorite Places**")
@@ -52,15 +52,6 @@ struct HomeView: View {
                     .presentationBackground(.ultraThinMaterial)
             }
             
-        }
-    }
-    
-    private func emptyStateView() -> some View{
-        Group{
-            Spacer()
-            Text("Lets add some places by tapping +")
-                .font(.largeTitle)
-                .foregroundStyle(.secondary.opacity(0.5))
         }
     }
     
@@ -112,6 +103,15 @@ struct HomeView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 20))
             }
             .buttonStyle(.plain)
+        }
+    }
+    
+    private func emptyStateView() -> some View{
+        Group{
+            Spacer()
+            Text("Lets add some places by tapping +")
+                .font(.largeTitle)
+                .foregroundStyle(.secondary.opacity(0.5))
         }
     }
 }
