@@ -32,12 +32,13 @@ struct AddPlaceView: View {
                 if let image = viewModel.image{
                     image
                         .resizable()
-                        .frame(width: 200,height: 250)
+                        .frame(width: 200,height: 350)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                 } else {
                     Image("eiffel_tower")
-                        .blur(radius: 5)
-                        .frame(width: 200,height: 250)
+                        .resizable()
+                        .blur(radius: 30)
+                        .frame(width: 200,height: 350)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
                 Button("Get Image") {
