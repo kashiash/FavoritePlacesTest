@@ -10,24 +10,26 @@ import SwiftUI
 struct HomeView: View {
     
     @StateObject var viewModel = PlacesListVM()
+    
     var body: some View {
         NavigationStack{
-            topHeader()
-            if !viewModel.places.isEmpty{
-                 placesView()
-                
-            } else {
-                 emptyStateView()
+            VStack(spacing: 30){
+                topHeader()
+                if !viewModel.places.isEmpty{
+                    placesView()
+                    
+                } else {
+                    emptyStateView()
+                }
+                Spacer()
             }
-            Spacer()
-        }
-        .padding()
-        .onAppear{
-            viewModel.fetchPlaces()
-            
+            .padding()
+            .onAppear{
+                viewModel.fetchPlaces()
+                
+            }
         }
     }
-    
     private func topHeader() -> some View{
         HStack{
             Text("**Favorite Places**")

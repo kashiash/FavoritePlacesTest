@@ -22,7 +22,7 @@ struct AddPlaceView: View {
                     TextField("City:", text:  $viewModel.city)
                     TextField("Country:", text:  $viewModel.country)
                     TextField("Notes:", text:  $viewModel.notes)
-                    }
+                    
                 }
                 .textFieldStyle(.roundedBorder)
                 .padding(.horizontal)
