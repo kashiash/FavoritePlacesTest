@@ -15,6 +15,8 @@ class AddPlaceVM: ObservableObject {
     @Published var city: String = ""
     @Published var country: String = ""
     @Published var notes: String = ""
+    @Published var flag: String = ""
+    @Published var address: String = ""
     
         // progress props
     @Published var showProgress = false
@@ -23,7 +25,7 @@ class AddPlaceVM: ObservableObject {
     @Published var image: Image?
     @Published var imageData: Data?
     
-    func savePlace() async {
+    func savePlace(_ getImage: Bool = false ) async {
             // core data manager save place logic
         if let data = imageData {
             CoreDataManager.shared.savePlace(name: name, notes: notes, city: city, country: country, imageData: data)

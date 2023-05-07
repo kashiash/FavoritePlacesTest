@@ -24,33 +24,33 @@ struct PlaceDetailView: View {
             }
             .frame(maxHeight: .infinity)
             .edgesIgnoringSafeArea(.all)
-            customeBackButton()
+           // customeBackButton()
         }
-        .navigationBarBackButtonHidden()
+      //  .navigationBarBackButtonHidden()
         .onAppear{
             locationManager.getLocationFor(address: place.city + " " + place.country)
         }
     }
-    fileprivate func customeBackButton() -> some View{
-        HStack{
-            Button(action: {
-                withAnimation {
-                    dismiss()
-                }
-            }) {
-                Image(systemName: "chevron.left")
-                    .font(.title)
-            }
-            .padding(.horizontal)
-            .padding(.vertical,10)
-            .foregroundStyle(.primary)
-            .background(.ultraThinMaterial, in:RoundedRectangle(cornerRadius: 20))
-            .contentShape(Rectangle())
-            Spacer()
-            
-        }
-        .padding(.leading)
-    }
+//    fileprivate func customeBackButton() -> some View{
+//        HStack{
+//            Button(action: {
+//                withAnimation {
+//                    dismiss()
+//                }
+//            }) {
+//                Image(systemName: "chevron.left")
+//                    .font(.title)
+//            }
+//            .padding(.horizontal)
+//            .padding(.vertical,10)
+//            .foregroundStyle(.primary)
+//            .background(.ultraThinMaterial, in:RoundedRectangle(cornerRadius: 20))
+//            .contentShape(Rectangle())
+//            Spacer()
+//
+//        }
+//        .padding(.leading)
+//    }
     
     fileprivate func backgroundImageView() -> some View{
         GeometryReader{ geo in
@@ -73,9 +73,16 @@ struct PlaceDetailView: View {
                 }
                 
                 HStack {
-                    Text(place.city)
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text(place.name)
+                            .font(.headline)
+                        Text(place.address)
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+                    }
                     Spacer()
                     Text(place.country)
+                    Text(place.flag)
                 }
                 .foregroundStyle(.secondary)
                 

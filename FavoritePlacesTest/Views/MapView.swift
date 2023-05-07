@@ -33,6 +33,12 @@ struct MapView: UIViewRepresentable{
             
             mapView.removeAnnotations(mapView.annotations)
             mapView.addAnnotation(annotation)
+            
+            if let userLocation = locationManager.userLocation {
+                let userAnnotation = MKPointAnnotation()
+                annotation.coordinate = .init(latitude:userLocation.latitude,longitude: userLocation.longitude)
+                mapView.addAnnotation(userAnnotation)
+            }
         }
         
         return mapView

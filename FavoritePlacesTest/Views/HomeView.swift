@@ -32,9 +32,15 @@ struct HomeView: View {
     
     private func topHeader() -> some View{
         HStack{
-            Text("**Favorite Places**")
-                .font(.title)
+//            Text("**Favorite Places**")
+//                .font(.title)
             Spacer()
+            Button(action: CoreDataManager.shared.createSampleData ) {
+                Image(systemName: "plus.circle.fill")
+                    .font(.largeTitle)
+                    .foregroundStyle(.primary)
+                    .tint(Color.orange.gradient)
+            }
             Button(action: {viewModel.showAddSheet.toggle() }) {
                 Image(systemName: "plus.circle.fill")
                     .font(.largeTitle)
@@ -55,6 +61,8 @@ struct HomeView: View {
         }
     }
     
+    
+   
     private func placesView() -> some View{
         GeometryReader{geo in
             ScrollView(.horizontal,showsIndicators: false){

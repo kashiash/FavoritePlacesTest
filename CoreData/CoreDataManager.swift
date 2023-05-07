@@ -40,6 +40,51 @@ class CoreDataManager{
         }
     }
     
+    func delete(_ object: NSManagedObject) {
+        context.delete(object)
+        saveContext()
+    }
+    
+    private func delete(_ fetchRequest: NSFetchRequest<NSFetchRequestResult>) {
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        batchDeleteRequest.resultType = .resultTypeObjectIDs
+        
+        if let delete = try? context.execute(batchDeleteRequest) as? NSBatchDeleteResult {
+            let changes = [NSDeletedObjectsKey: delete.result as? [NSManagedObjectID] ?? []]
+            NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [context])
+        }
+    }
+    
+    
+    func deleteAll() {
+        let request1: NSFetchRequest<NSFetchRequestResult> = Place.fetchRequest()
+        delete(request1)
+        
+        
+        saveContext()
+    }
+    
+    func createSampleData() {
+        
+        for location in PlaceViewModel.sampleLocations {
+            print("Adding  \(location.name)")
+            try? {
+                let place = AddPlaceVM()
+                place.address = location.address
+                place.notes = location.description
+                place.flag = location.flagEmoji
+                    // place.city = location.city
+                place.country = location.country
+                place.name = location.name
+                
+                
+                print("Taking Image \(place.name)")
+                await place.getImageFor(placeName: place.name + " " + place.address)
+                print("Saving \(place.name)")
+                await place.savePlace()
+            }
+        }
+    }
     
     func getAll() -> [Place]{
         var places = [Place]()
