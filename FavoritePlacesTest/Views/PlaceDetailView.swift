@@ -83,9 +83,10 @@ struct PlaceDetailView: View {
                 
                 Spacer()
                 NavigationLink{
-                    LazyView{
-                        MapDetailView(place: place)
-                    }
+                  
+                        CarouselMapView(place: place)
+                        
+                 
                 } label: {
                     Map(coordinateRegion: $locationManager.region, interactionModes: .zoom)
                         .frame(height: 150)

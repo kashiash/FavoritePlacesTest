@@ -22,6 +22,13 @@
 		3F8229802A05855F00662A00 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82297F2A05855F00662A00 /* CoreDataManager.swift */; };
 		3F8229822A059BEC00662A00 /* PlaceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8229812A059BEC00662A00 /* PlaceDetailView.swift */; };
 		3F8229852A05B7FA00662A00 /* MapDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8229842A05B7FA00662A00 /* MapDetailView.swift */; };
+		3F8229872A07C0A100662A00 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8229862A07C0A100662A00 /* CardView.swift */; };
+		3F8229892A07C0FE00662A00 /* CarouselMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8229882A07C0FE00662A00 /* CarouselMapView.swift */; };
+		3F82298B2A07C4D500662A00 /* LookAroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82298A2A07C4D500662A00 /* LookAroundView.swift */; };
+		3F82298D2A07C97A00662A00 /* TurnAroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82298C2A07C97A00662A00 /* TurnAroundView.swift */; };
+		3F82298F2A07C9AB00662A00 /* MapViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82298E2A07C9AB00662A00 /* MapViewRepresentable.swift */; };
+		3F8229912A07CE1B00662A00 /* LookAroundContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8229902A07CE1B00662A00 /* LookAroundContentView.swift */; };
+		3F8229932A07CE5C00662A00 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8229922A07CE5C00662A00 /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +49,13 @@
 		3F82297F2A05855F00662A00 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		3F8229812A059BEC00662A00 /* PlaceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailView.swift; sourceTree = "<group>"; };
 		3F8229842A05B7FA00662A00 /* MapDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailView.swift; sourceTree = "<group>"; };
+		3F8229862A07C0A100662A00 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		3F8229882A07C0FE00662A00 /* CarouselMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselMapView.swift; sourceTree = "<group>"; };
+		3F82298A2A07C4D500662A00 /* LookAroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookAroundView.swift; sourceTree = "<group>"; };
+		3F82298C2A07C97A00662A00 /* TurnAroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnAroundView.swift; sourceTree = "<group>"; };
+		3F82298E2A07C9AB00662A00 /* MapViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewRepresentable.swift; sourceTree = "<group>"; };
+		3F8229902A07CE1B00662A00 /* LookAroundContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookAroundContentView.swift; sourceTree = "<group>"; };
+		3F8229922A07CE5C00662A00 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +126,12 @@
 				3F8229742A04558500662A00 /* AddPlaceView.swift */,
 				3F8229762A04F30000662A00 /* HomeView.swift */,
 				3F8229842A05B7FA00662A00 /* MapDetailView.swift */,
+				3F8229862A07C0A100662A00 /* CardView.swift */,
+				3F8229882A07C0FE00662A00 /* CarouselMapView.swift */,
+				3F82298C2A07C97A00662A00 /* TurnAroundView.swift */,
+				3F82298E2A07C9AB00662A00 /* MapViewRepresentable.swift */,
+				3F8229902A07CE1B00662A00 /* LookAroundContentView.swift */,
+				3F8229922A07CE5C00662A00 /* MapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -122,6 +142,7 @@
 				3F82297F2A05855F00662A00 /* CoreDataManager.swift */,
 				3F82297C2A0583A600662A00 /* FavoritePlacesTest.xcdatamodeld */,
 				3F82297A2A057B0A00662A00 /* LocationManager.swift */,
+				3F82298A2A07C4D500662A00 /* LookAroundView.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -196,17 +217,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F8229872A07C0A100662A00 /* CardView.swift in Sources */,
 				3F8229722A044E2C00662A00 /* PlacesListVM.swift in Sources */,
 				3F8229772A04F30000662A00 /* HomeView.swift in Sources */,
 				3F7D331D2A030503003532EB /* ContentView.swift in Sources */,
+				3F82298F2A07C9AB00662A00 /* MapViewRepresentable.swift in Sources */,
 				3F8229752A04558500662A00 /* AddPlaceView.swift in Sources */,
 				3F8229792A0571A500662A00 /* LazyView.swift in Sources */,
 				3F82297E2A0583A600662A00 /* FavoritePlacesTest.xcdatamodeld in Sources */,
 				3F82296C2A04470300662A00 /* PlaceViewModel.swift in Sources */,
+				3F82298D2A07C97A00662A00 /* TurnAroundView.swift in Sources */,
+				3F82298B2A07C4D500662A00 /* LookAroundView.swift in Sources */,
 				3F8229822A059BEC00662A00 /* PlaceDetailView.swift in Sources */,
 				3F8229852A05B7FA00662A00 /* MapDetailView.swift in Sources */,
+				3F8229912A07CE1B00662A00 /* LookAroundContentView.swift in Sources */,
+				3F8229892A07C0FE00662A00 /* CarouselMapView.swift in Sources */,
 				3F7D331B2A030503003532EB /* FavoritePlacesTestApp.swift in Sources */,
 				3F8229702A04473100662A00 /* AddPlaceVM.swift in Sources */,
+				3F8229932A07CE5C00662A00 /* MapView.swift in Sources */,
 				3F82297B2A057B0A00662A00 /* LocationManager.swift in Sources */,
 				3F8229802A05855F00662A00 /* CoreDataManager.swift in Sources */,
 			);
@@ -337,6 +365,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationUsageDescription = "Bo tak!";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Bo tak!";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -375,6 +405,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationUsageDescription = "Bo tak!";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Bo tak!";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

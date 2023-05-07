@@ -9,10 +9,13 @@ import Foundation
 import CoreLocation
 import MapKit
 import Foundation
+import CoreLocation
 
-
-class LocationManager: ObservableObject {
+class LocationManager: NSObject,ObservableObject,CLLocationManagerDelegate {
     @Published var region: MKCoordinateRegion = MKCoordinateRegion(center: LocationManager.pointNemo, latitudinalMeters: 5000, longitudinalMeters: 5000)
+  
+    
+    private let locationManager = CLLocationManager()
     
     func getLocationFor(address: String) {
         let geoCoder = CLGeocoder()
@@ -25,6 +28,25 @@ class LocationManager: ObservableObject {
             
             self?.region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 5000, longitudinalMeters: 5000)
         }
+    }
+    
+    @Published var userLocation: CLLocationCoordinate2D?
+    
+    override init() {
+        super.init()
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if userLocation != nil { return }
+        guard let location = locations.last else { return }
+        
+        userLocation = location.coordinate
     }
 }
 

@@ -62,6 +62,20 @@ class CoreDataManager{
         place.notes = notes
         place.image = imageData
         
+        
+        saveContext()
+    }
+    
+    func savePlace(name: String , notes: String, city: String, country: String, imageData: Data,flag: String, address: String ){
+        let place = Place(context: context)
+        place.id = UUID()
+        place.name = name
+        place.city = city
+        place.country = country
+        place.notes = notes
+        place.image = imageData
+        place.flag = flag
+        place.address = address
         saveContext()
     }
     
