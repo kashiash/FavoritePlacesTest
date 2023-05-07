@@ -77,7 +77,7 @@ struct HomeView: View {
             ZStack(alignment: .bottom) {
                 place.placeImage
                     .resizable()
-                    .scaledToFit()
+                    .scaledToFill()
                     .frame(maxWidth: imageMaxWidth)
                 
                 VStack{
@@ -92,11 +92,13 @@ struct HomeView: View {
                         Text(place.city)
                         Spacer()
                         Text(place.country)
-                            .padding(.horizontal)
-                            .padding(.vertical,10)
-                            .background(.ultraThinMaterial)
+                        
                         
                     }
+                    .padding(.horizontal)
+                    .padding(.vertical,10)
+                    .background(.ultraThinMaterial)
+                }
                     
                 }
                 .contentShape(Rectangle())
@@ -104,7 +106,7 @@ struct HomeView: View {
             }
             .buttonStyle(.plain)
         }
-    }
+    
     
     private func emptyStateView() -> some View{
         Group{
